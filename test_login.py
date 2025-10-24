@@ -39,8 +39,8 @@ def test_login():
         # Agregar pausa (solamente para poder verificar visualmente qué hace)
         time.sleep(2)
 
-        # <> Ingresar credenciales válidas (usuario y contraseña) y presiona el botón 'Login'        # Localización e interacción de elementos
-        
+        # <> Ingresar credenciales válidas (usuario y contraseña) y presiona el botón 'Login'   
+                
         # Espera explícita 
         # Espera a que se ejecute una condición particular de un elemento particular)
         # Si el elemento no aparece en el tiempo especificado, devuelve un error.
