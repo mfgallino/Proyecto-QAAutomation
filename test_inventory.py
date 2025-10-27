@@ -9,8 +9,8 @@ Criterios mínimos:
 •	Valida título
 •	Valida presencia de productos 
 •	Lista nombre/precio del primero.
-
 """
+
 from selenium import webdriver
 import time
 
@@ -24,20 +24,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def test_inventory():
+def test_inventory(login_in_driver):
     try:
-        driver = webdriver.Chrome()
+        driver = login_in_driver
 
-        # LOGIN
-        driver.get("https://www.saucedemo.com/")
-        driver.find_element(By.ID, "user-name").send_keys("standard_user")
-        driver.find_element(By.ID, "password").send_keys("secret_sauce")
-        driver.find_element(By.ID, "login-button").click()
-
-        # >> Verificar que el título de la página de inventario sea correcto
+        # <> Verificar el título de la página (pestaña)
         assert driver.title == "Swag Labs", f"El título de la página es incorrecto: {driver.title}"
 
-        # >> Comprobar que existan productos visibles en la página
+        # <> Comprobar que existan productos visibles en la página
 
         # Creamos una variable, donde capturamos en una lista, todos los elementos de la página.
         # Usamos la clase, que es común a todos los elementos
@@ -46,7 +40,7 @@ def test_inventory():
         # Chequeamos si la longitud de la variable es > 0
         assert len(productos) > 0, "No existen productos visibles en la página."
 
-        # >> Validar que elementos importantes de la interfaz estén presentes (menú, filtro)
+        # <> Validar que los elementos importantes de la interfaz estén presentes (menú, filtro)
 
         # > Menú Hamburguesa
         # Le damos tiempo para que aparezca
@@ -57,10 +51,10 @@ def test_inventory():
 
         # > Filtro
         # Le damos tiempo para que aparezca
-        filtro_btn = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "product_sort_container")))
+        sort_btn = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "product_sort_container")))
 
         # Verificamos que esté visible
-        assert menu_btn.is_displayed(), "El filtro no está visible."
+        assert sort_btn.is_displayed(), "El filtro no está visible."
 
     # Guardamos en una variable (e) el error qué tuvo en el momento de la ejecución 
     except Exception as e:

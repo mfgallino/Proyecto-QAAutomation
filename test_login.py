@@ -13,48 +13,9 @@ from selenium import webdriver
 #Atajo para usar el método By
 from selenium.webdriver.common.by import By 
 
-#Espera explícita
-from selenium.webdriver.support.ui import WebDriverWait 
-
-#Condiciones para espera explícita
-from selenium.webdriver.support import expected_conditions as EC
-
-import time
-
-
-# Definir la función para llamarla luego desde pytest.
-def test_login():
-    driver = webdriver.Chrome()
-
-    # Espera implicita: para que selenium espere 5seg a que el elemento aparezca antes de dar error
-    # Esto es una Buena Práctica (es un tiempo máximo de espera entre acciones)
-    # driver.implicitly_wait(5)
-
+def test_login_validation(login_in_driver):
     try:
-        # <> LOGIN 
-        
-        # <> Ingresar a la página
-        driver.get("https://www.saucedemo.com/")
-
-        # Agregar pausa (solamente para poder verificar visualmente qué hace)
-        time.sleep(2)
- 
-                
-        # Espera explícita (espera a que sea visible el user_name)
-        # Si el elemento no aparece en el tiempo especificado, devuelve un error.
-        wait = WebDriverWait(driver,10)
-        usuario = wait.until(EC.visibility_of_element_located((By.ID, "user-name")))
-        
-        # <> Ingresar credenciales válidas (usuario y contraseña) 
-        usuario.send_keys("standard_user") 
-        driver.find_element(By.ID, "password").send_keys("secret_sauce")
-        
-        time.sleep(2)
-        
-        # <> Presionar el botón 'Login'  
-        driver.find_element(By.ID, "login-button").click()
-        time.sleep(3)
-        
+        driver = login_in_driver
 
         # <> Validar la redirección a inventario.html
         assert '/inventory.html' in driver.current_url   # Buscar una parte del url en el url de la web que estamos
@@ -65,11 +26,10 @@ def test_login():
 
     # Guardar en una variable (e) el error qué tuvo en el momento de la ejecución 
     except Exception as e:
-        print(f"Error en test_login: {e}")       # Mostrar el mensaje de error con un print
-        raise        # Utilizar raise para avisar a pytest que hubo un error
+        print(f"Error en test_login: {e}")   # Mostrar el mensaje de error con un print
+        raise    # Utilizar raise para avisar a pytest que hubo un error
 
-    
-    # || No agregar esta sentencia porque se va a llamar a esta función para hacer otros tests ||
     #Finalmente, cerrar la página (cualquiera sea el resultado del test)
-    #finally:
-    #    driver.quit()
+    finally:
+        driver.quit()
+
