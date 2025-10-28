@@ -58,7 +58,6 @@ def test_inventory(login_in_driver):
 
     # Guardamos en una variable (e) el error qué tuvo en el momento de la ejecución 
     except Exception as e:
-
         # y lo mostramos con un print:
         print(f"Error en test_inventory: {e}")
         # Utilizamos raise para avisar a pytest que hubo un error

@@ -11,7 +11,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 import time
 
-# <> LOGIN 
+# <> LOGIN
+"""Realiza el login a Saucedemo.com para realizar cada uno de los tests"""
 def login(driver):
     # <> Ingresar a la página
     driver.get("https://www.saucedemo.com/")
@@ -33,4 +34,21 @@ def login(driver):
     # <> Presionar el botón 'Login'  
     driver.find_element(By.ID, "login-button").click()
     time.sleep(3)
+
+from selenium.webdriver.common.by import By
+
+
+#INFO DE PRODUCTO
+"""
+    Busca la información de un producto (nombre, descripción y precio), ya sea de la lista 
+    de inventario o del carrito y la guarda en forma de diccionario asignado a una variable (info) .
+    """
+def info_producto(elemento_producto):
+    
+    info_producto = {
+        "nombre": elemento_producto.find_element(By.CLASS_NAME, "inventory_item_name").text,
+        "descripcion": elemento_producto.find_element(By.CLASS_NAME, "inventory_item_desc").text,
+        "precio": elemento_producto.find_element(By.CLASS_NAME, "inventory_item_price").text
+    }
+    return info_producto
 

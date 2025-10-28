@@ -12,4 +12,5 @@ test_files = [
 #   y -v para que muestre los detalles de los resultados del test)
 pytest_args = test_files + ["--html=report.html","--self-contained-html","-v"]
 
-pytest.main(pytest_args)
+if __name__ == "__main__":
+    pytest.main(pytest_args)
