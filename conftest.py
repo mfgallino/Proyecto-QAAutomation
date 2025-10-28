@@ -13,7 +13,9 @@ from utils import login
 #Inicializar el navegador a través de una función:
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--incognito") 
+    driver = webdriver.Chrome(options=options)
 
     #Utilizar 'yield' para insertar acá la ejecución del test
     yield driver
