@@ -57,19 +57,18 @@ git clone https://github.com/mfgallino/Proyecto-QAAutomation
 
 ## Estructura del Proyecto
 El proyecto está estructurado de la siguiente manera:
-Carpeta raíz del proyecto
-│
-├── tests/           < Carpeta de tests automatizados
-│    │
-│    ├── test_login.py      < Verifica el inicio de sesión exitoso/fallido.    
-│    ├── test_inventory.py  < Valida la carga del catálogo y los elementos del inventario
-│    └── test_shopping.py   < Comprueba la funcionalidad del carrito y la coincidencia de los productos agregados
-│
-├── utils.py        < Funciones de soporte reutilizables
-├── conftest.py     < Configuración global de fixtures y setup
-├── run_tests.py    < Script para ejecutar todas las pruebas y generar reporte de resultados.
-├── README.md
-└── report.html
+
+- **Carpeta raíz del proyecto/**
+- **tests/** (Carpeta de tests automatizados)
+- - **test_login.py** (Verifica el inicio de sesión exitoso/fallido)    
+- - **test_inventory.py** (Valida la carga del catálogo y los elementos del inventario)
+- - **test_shopping.py** (Comprueba la funcionalidad del carrito y la coincidencia de los productos agregados)
+- **run_tests.py** (Ejecuta todas las pruebas y genera reporte de resultados)
+- **utils.py** (Funciones de soporte reutilizables)
+- **conftest.py** (Configuración global de fixtures y setup)
+- **report.html** (Reporte de resultados)
+- **README.md**
+
 
 
 ## Ejecución de Pruebas
