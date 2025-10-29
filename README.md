@@ -46,7 +46,7 @@ Escribir las siguientes sentencias desde Git Bash, en la carpeta raíz:
 1. Convertir la carpeta raíz del proyecto en un repositorio Git local:
 git init
 2. Descargar una copia del proyecto:
-git clone https://github.com/mfgallino/Proyecto-QAAutomation 
+git clone https://github.com/mfgallino/Proyecto-QAAutomation.git 
 
 
 ## Instalación de Dependencias
