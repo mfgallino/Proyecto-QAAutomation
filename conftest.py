@@ -2,13 +2,15 @@
 NOTA: 'conftest.py' tiene la particularidad de que todo lo definido acá 
        se hace globalmente. Por lo tanto, no requerirán importarse para
        llamarlos desde otros archivos, sino que las reconocen directamente. 
-       Sirve para compartir configuraciones globales.
+       Sirve para compartir configuraciones globales, es decir, centralizar las configuraciones que utilizan los tests.
        Este archivo tiene que estar en la raiz o por lo menos en un nivel superior a los archivos de tests.
 """
 
 import pytest
 from selenium import webdriver
-from utils import login
+from pages.login_page import LoginPage # Importar la clase LoginPage
+from selenium.webdriver.chrome.options import Options
+
 
 #Inicializar el navegador a través de una función:
 @pytest.fixture
@@ -19,11 +21,13 @@ def driver():
 
     #Utilizar 'yield' para insertar acá la ejecución del test
     yield driver
-
     driver.quit()
 
 #Ejecutar el login e insertar el driver
 @pytest.fixture
-def login_in_driver(driver):
-    login(driver)
+def login_in_driver(driver, usuario, password):
+    LoginPage(driver).abrir_pagina().login_completo(usuario, password)
     return driver
+
+
+"""fAKER LIBRERIA que permite generar usuarios falsos para hacer pruebas"""

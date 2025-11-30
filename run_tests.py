@@ -4,7 +4,8 @@ import pytest
 test_files = [
     "tests/test_login.py",
     "tests/test_inventory.py",
-    "tests/test_shopping.py"
+    "tests/test_cart.py",
+    "tests/test_cart_json.py"
 ]
 # Argumentos para ejecutar los tests:
 # Concatenamos los archivos y los parámetros para generar el reporte de pytest
