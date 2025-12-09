@@ -13,6 +13,8 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
     logger.info("Completando los datos de usuario") # log
     driver = login_in_driver
 
+    LoginPage(driver).login_completo(usuario,password)
+
     if debe_funcionar == True:
         logger.info("Validando redireccionamiento al Inventario.") # log
         # <> Validar la redirección a inventario.html
@@ -21,7 +23,7 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
     else:
         mensaje_error = LoginPage(driver).obtener_error()
         assert "Epic sadface" in mensaje_error, "El mensaje de error no se está mostrando."
-        logger.info("Se muestra mensaje de error de login.") # log   
+        logger.info("Prueba de login con datos incorrectos completada.") # log   
 
     """FALTA VOLVER A AGREGAR ESTO:
     # <> Validar el Encabezado ("SWAG LABS") y el Subtítulo ("PRODUCTS") de la página

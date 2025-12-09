@@ -26,7 +26,8 @@ fake.password(length=8, special_chars=True, upper_case=True, lower_case=True, di
 def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
     try:
         driver = login_in_driver
-
+        LoginPage(driver).login_completo(usuario,password)
+        
         if debe_funcionar == True:
 
             # <> Validar la redirección a inventario.html

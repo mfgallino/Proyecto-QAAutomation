@@ -1,29 +1,18 @@
-"""
-CONSIGNA DE PREENTREGA
-2.	Navegación y Verificación del Catálogo: (Clases 6 a 8)
-•	Caso de Prueba de Navegación:
-    o	Verificar que el título de la página de inventario sea correcto
-    o	Comprobar que existan productos visibles en la página (al menos verificar la presencia de uno)
-    o	Validar que elementos importantes de la interfaz estén presentes (menú, filtros, etc.)
-Criterios mínimos:
-•	Valida título
-•	Valida presencia de productos 
-•	Lista nombre/precio del primero.
-"""
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By     # #Atajo para usar el método By
 from selenium.webdriver.support.ui import WebDriverWait     #Espera explícita
 from selenium.webdriver.support import expected_conditions as EC     #Condiciones para espera explícita
-import time
 import pytest
+
+from pages.login_page import LoginPage
 
 from pages.inventory_page import InventoryPage
 
 @pytest.mark.parametrize("usuario, password",[("standard_user","secret_sauce")])
-def test_inventory(login_in_driver):
+def test_inventory(login_in_driver, usuario, password):
     try:
         driver = login_in_driver
+        LoginPage(driver).login_completo(usuario,password)
 
         # Instanciar el driver para ejecutar las funciones 
         inventory_page = InventoryPage(driver)
@@ -80,7 +69,5 @@ def test_inventory(login_in_driver):
         print(f"Error en test_inventory: {e}")
         # Utilizamos raise para avisar a pytest que hubo un error
         raise
-        
-    finally:
-        driver.quit()
+
 

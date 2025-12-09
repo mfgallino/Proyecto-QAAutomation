@@ -1,8 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By     # #Atajo para usar el método By
-import time
 import pytest
 
+from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from utils.lector_json import leer_json_productos
@@ -15,9 +15,10 @@ RUTA_JSON = "datos/productos.json"
 
 @pytest.mark.parametrize("usuario, password",[("standard_user","secret_sauce")])
 @pytest.mark.parametrize("nombre_producto", leer_json_productos(RUTA_JSON))  # Valores de los nombres que da el JSON
-def test_cart_json(login_in_driver, nombre_producto):
+def test_cart_json(login_in_driver, usuario, password, nombre_producto):
     try:
         driver = login_in_driver
+        LoginPage(driver).login_completo(usuario,password)
 
         # Instanciar el driver para ejecutar las funciones 
         inventory_page = InventoryPage(driver)

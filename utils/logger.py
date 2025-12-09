@@ -36,14 +36,14 @@ if not logger.handlers:
     # Definir formatter
     formatter = logging.Formatter(
         "%(asctime)s %(levelname)s %(name)s %(message)s",
-        datefmt="%Y-%m-%D %H:%M:%S"
+        datefmt="%Y-%m-%d %H:%M:%S"
     )
 
     """
     - asctime   -> fecha/hora
     - levelname -> nivel de log (INFO, ERROR…)
     - name      -> nombre del logger
-    - message   -> el texto del mensaje
+    - message   -> texto del mensaje
     La s indica que ese valor debe formatearse como string. 
     """
 
