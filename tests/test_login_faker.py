@@ -48,6 +48,4 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
         print(f"Error en test_login: {e}")   # Mostrar el mensaje de error con un print
         raise    # Utilizar raise para avisar a pytest que hubo un error
 
-    #Finalmente, cerrar la página (cualquiera sea el resultado del test)
-    finally:
-        driver.quit()
+    

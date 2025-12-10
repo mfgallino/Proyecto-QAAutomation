@@ -38,5 +38,3 @@ def test_cart_json(login_in_driver, usuario, password, nombre_producto):
         print(f"Error en test_cart: {e}")   # Mostrarlo con un print:
         raise     # Avisar a pytest que hubo un error
         
-    finally:
-        driver.quit()

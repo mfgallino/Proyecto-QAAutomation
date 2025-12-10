@@ -13,10 +13,7 @@ def test_cart(login_in_driver, usuario, password):
     try:
         driver = login_in_driver
 
-        LoginPage(driver).login_completo(usuario, password)
-
-        """SACAR ESTO??
-        driver.login_completo(usuario, password) """
+        LoginPage(driver).login_completo(usuario, password)  # Traer el driver y ejecutar la función de login_completo con usuario/contraseña parametrizados
 
         inventory_page = InventoryPage(driver)   # Instanciar el driver para ejecutar las funciones 
 
@@ -32,7 +29,7 @@ def test_cart(login_in_driver, usuario, password):
         productos_en_carrito = cartPage.obtener_productos_carrito()
         assert len(productos_en_carrito) == 1
 
-        # Para probar la instancia de fallo:
+        # Activar solamente para probar la instancia de fallo:
         # assert False, "Fallo de prueba forzado"
 
 # Guardar en una variable (e) el error que tuvo en el momento de la ejecución 
