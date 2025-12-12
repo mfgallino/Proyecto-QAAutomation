@@ -4,51 +4,51 @@ on:
     branches: [main,develop]
   pull_request:
     branches: [main,develop]
-  jobs: 
-    test:
-      runs-on: ubuntu-latest
-      env:
-        PYTHON_VERSION: '3.12'
-        PIP_CACHE: ~/.cache/pip # crear la carpeta cache desde una posición que no sabemos cuál es en github (con la tilde ~ se crea desde el home del usuario)
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON_VERSION: '3.12'
+      PIP_CACHE: ~/.cache/pip # crear la carpeta cache desde una posición que no sabemos cuál es en github (con la tilde ~ se crea desde el home del usuario)
 
-      steps: 
-        #1 Checkout
-        - name: Checkout codigo
-          uses: actions/checkout@v4  # permite que la máquina virtual dentro de lo que es el proyecto, pueda acceder al código del repositorio.  
-                                     # 'v4' versión de usada para checkout (más estable).
-        #2 Cache de pip
-        - name: Cache dependencia
-          uses: actions/cache@v4     # 'v4' versión de actions usada para cache (más estable).
-          with:
-            path: ${{ env.PIP_CACHE }}   # entorno
-            key: ${{ runner.os }}-pip-${{ hashfiles('**requirements.txt') }}   
+    steps: 
+      #1 Checkout
+      - name: Checkout codigo
+        uses: actions/checkout@v4  # permite que la máquina virtual dentro de lo que es el proyecto, pueda acceder al código del repositorio.  
+                                   # 'v4' versión de usada para checkout (más estable).
+      #2 Cache de pip
+      - name: Cache dependencia
+        uses: actions/cache@v4     # 'v4' versión de actions usada para cache (más estable).
+        with:
+          path: ${{ env.PIP_CACHE }}   # entorno
+          key: ${{ runner.os }}-pip-${{ hashfiles('**requirements.txt') }}   
 
-        #3 Setup de python
-        - name: Instalar python ${{ env.PYTHON_VERSION }}
-          uses: actions/setup-python@v5  # 'v5' versión de actions usada para python (más rápida, última versión).
-          with:
-            python-version: ${{ env.PYTHON_VERSION }}
+      #3 Setup de python
+      - name: Instalar python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5  # 'v5' versión de actions usada para python (más rápida, última versión).
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-        #4 Instalar dependencias
-        - name: Instalar dependencias
-          run: pip install -r requirements.txt
+      #4 Instalar dependencias
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
 
-        #5 Ejecutar Tests
-        - name: Run tests
-          run: python3 run_tests.py 
+      #5 Ejecutar Tests
+      - name: Run tests
+        run: python3 run_tests.py 
 
-        #6 Subir artefactos (reportes + imagenes + logs)
-        - name: subir HTML report
-          uses: actions/upload-artifact@v4
-          with: 
-            name: html-report
-            path: reports/
+      #6 Subir artefactos (reportes + imagenes + logs)
+      - name: subir HTML report
+        uses: actions/upload-artifact@v4
+        with: 
+          name: html-report
+          path: reports/
 
-        - name: Subir suite logs
-          uses: actions/upload-artifact@v4
-          with:
-            name: suite-log
-            path: logs/
+      - name: Subir suite logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: suite-log
+          path: logs/
 
 
 
