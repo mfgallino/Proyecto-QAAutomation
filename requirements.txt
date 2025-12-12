@@ -1,0 +1,13 @@
+# Dependencias del proyecto
+
+pytest
+pytest-html
+selenium
+webdriver-manager
+faker
+requests
+
+"""
+# Este archivo se ejecuta en consola con:
+py -m  pip install -r requirements.txt
+"""

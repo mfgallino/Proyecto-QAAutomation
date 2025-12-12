@@ -35,6 +35,11 @@ Conceptos:
 def driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--incognito") 
+    options.add_argument("--no-sandbox") # github (principal)
+    options.add_argument("--disable-gpu") # github (deshabilitar gpu)
+    options.add_argument("--window-size=1920,1080") # github (definir tamaño de pantalla)
+    options.add_argument("--headless=new") # github (correr sin ventana, en segundo plano)
+    
     driver = webdriver.Chrome(options=options)
 
     #Utilizar 'yield' para insertar acá la ejecución del test

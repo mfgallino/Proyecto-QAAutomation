@@ -1,5 +1,12 @@
 import pytest
 
+
+pytest.main(["tests/","--html=reports/report.html","--self-contained-html","-v"])
+
+
+"""
+LO ANTERIOR REEMPLAZO TODO LO QUE SIGUE:
+
 #Lista de archivos de tests a ejecutar
 test_files = [
     "tests/test_login.py",
@@ -17,3 +24,5 @@ pytest_args = test_files + ["--html=report.html","--self-contained-html","-v"]
 
 if __name__ == "__main__":
     pytest.main(pytest_args)
+
+"""
