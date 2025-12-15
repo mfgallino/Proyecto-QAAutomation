@@ -52,10 +52,3 @@ jobs:
 
 
 
-        # Artefactos: todos los productos (reportes) que nos devuelve el test
-
-
-
-
-#actions/checkout@v4 es la versión estable para descargar el código.
-#actions/setup-python@v5 es la versión estable más reciente para configurar el intérprete de Python.""

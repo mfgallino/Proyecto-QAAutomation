@@ -14,7 +14,7 @@ class InventoryPage:
 
 
 
-    def __init__(self, driver):  # self hace referencia a que vamos a trabajar con info que está dentro de la clase
+    def __init__(self, driver):  
         self.driver = driver  # Inicializar el driver
         self.wait = WebDriverWait(driver,10)  # Definir la espera
     
@@ -37,7 +37,6 @@ class InventoryPage:
 
         primer_boton_producto = productos[0].find_element(*self._ADD_TO_CART_BUTTON)
         primer_boton_producto.click()
-        # return self    # Se podría omitir el return en este caso, porque no retorna ningún valor, sino que ejecuta una acción.
        
     # Agregar producto por nombre al carrito
     def agregar_producto_por_nombre(self,nombre_producto):
@@ -45,7 +44,6 @@ class InventoryPage:
         productos = self.driver.find_elements(*self._INVENTORY_ITEMS)   #llama a otra función y asigna el resultado a una variable
         
         # Capturar los nombres en el formato texto
-        
         # Recorrer una lista buscando el nombre de cada producto
         for producto in productos:
             nombre = producto.find_element(*self._ITEM_NAME).text

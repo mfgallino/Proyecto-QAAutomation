@@ -8,12 +8,7 @@ class LoginPage:
     # Enlace de la página web (URL)
     URL = "https://www.saucedemo.com/"  
 
-    #Localizadores (_MAYUSCULAS)
-    """
-    Son la forma de identificar a elementos en la página web para interactuar con ellos
-    a través de Selenium y poder utilizarlos. 
-    Son variables internas.
-    """
+    #Localizadores (_MAYUSCULAS) 
     _USER_INPUT = (By.ID, "user-name")
     _PASS_INPUT = (By.ID, "password")
     _LOGIN_BUTTON = (By.ID, "login-button")
@@ -31,11 +26,7 @@ class LoginPage:
         return self
     
     # Login:
-    """
-    Se puede definir una función para cada paso: usuario, contraseña, botón login, 
-    o hacer todo junto dentro de una misma función. 
-    Se define en función de la complejidad del proyecto.
-    """
+    
     # Ingresar usuario
     def completar_user(self, usuario):
         input = self.wait.until(EC.visibility_of_element_located(self._USER_INPUT))

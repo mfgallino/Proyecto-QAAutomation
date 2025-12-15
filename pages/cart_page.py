@@ -11,7 +11,7 @@ class CartPage:
     _CART_ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")  # Nombre de producto en el carrito
 
 
-    def __init__(self, driver):  # self hace referencia a que vamos a trabajar con info que está dentro de la clase
+    def __init__(self, driver):  
         self.driver = driver  # Inicializar el driver
         self.wait = WebDriverWait(driver,10)  # Definir la espera
 

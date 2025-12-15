@@ -12,13 +12,6 @@ from utils.logger import logger
 #Inicializar faker
 fake = Faker()
 
-"""
-Luego, llamamos al faker al momento de pasarle los datos a través de la parametrización.
-Vamos a crear una lista con tuplas, cada tupla va a tener un conjunto de datos distintos.
-NOTA: para el caso de contraseñas que requieren ciertas condiciones, se puede agregar al faker
-esos parámetros para que los cumpla, por ej:
-fake.password(length=8, special_chars=True, upper_case=True, lower_case=True, digits=True)
-"""
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", [
     (fake.user_name(), fake.password(length=8, special_chars=True, upper_case=True, lower_case=True, digits=True), False),
@@ -39,12 +32,3 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
         mensaje_error = LoginPage(driver).obtener_error()
         assert "Epic sadface" in mensaje_error, "El mensaje de error no se está mostrando."
         logger.info("Prueba de login con datos incorrectos completada.") # log
-
-        """FALTA VOLVER A AGREGAR ESTO:
-        # <> Validar el Encabezado ("SWAG LABS") y el Subtítulo ("PRODUCTS") de la página
-        assert driver.find_element(By.CLASS_NAME,"app_logo").text == "Swag Labs", f"El Encabezado de la página es incorrecto: {driver.find_element(By.CLASS_NAME,"app_logo").text}"
-        assert driver.find_element(By.CLASS_NAME,"title").text == "Products", f"El subtítulo de la página es incorrecto: {driver.find_element(By.CLASS_NAME,"title").text}"
-        """
-
-
-    

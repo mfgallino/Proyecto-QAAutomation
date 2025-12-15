@@ -1,7 +1,6 @@
 import csv
 import pathlib # Librería para poder llamar al path del archivo 
-"""Esta librería busca el path desde la carpeta raíz, 
-   sin importar dónde esté el archivo destino. Por eso es más simple."""
+
 
 def leer_csv_login(ruta_archivo):
     ruta = pathlib.Path(ruta_archivo)
@@ -19,8 +18,3 @@ def leer_csv_login(ruta_archivo):
     return datos
 
 
-
-"""
-ESTO LO USAMOS AL CREAR EL ARCHIVO PARA PROBAR QUE FUNCIONABA, DESPUÉS LO BORRAMOS:
-print(leer_csv_login("datos/data_login.csv"))
-"""

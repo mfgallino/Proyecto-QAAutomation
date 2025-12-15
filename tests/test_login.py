@@ -26,11 +26,3 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
         assert "Epic sadface" in mensaje_error, "El mensaje de error no se está mostrando."
         logger.info("Prueba de login con datos incorrectos completada.") # log
     
-
-    """FALTA VOLVER A AGREGAR ESTO:
-    # <> Validar el Encabezado ("SWAG LABS") y el Subtítulo ("PRODUCTS") de la página
-    assert driver.find_element(By.CLASS_NAME,"app_logo").text == "Swag Labs", f"El Encabezado de la página es incorrecto: {driver.find_element(By.CLASS_NAME,"app_logo").text}"
-    assert driver.find_element(By.CLASS_NAME,"title").text == "Products", f"El subtítulo de la página es incorrecto: {driver.find_element(By.CLASS_NAME,"title").text}"
-    """
-
-    

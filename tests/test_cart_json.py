@@ -11,9 +11,6 @@ from utils.logger import logger
 # Definir constante con la ruta del archivo Json
 RUTA_JSON = "datos/productos.json"
 
-"""OPTATIVO: VER hacer archivo data_default_login.csv para parametrizar el usuario/login general
-              para las demás pruebas en vez de que esté hardcodeado."""
-
 @pytest.mark.parametrize("usuario, password",[("standard_user","secret_sauce")])
 @pytest.mark.parametrize("nombre_producto", leer_json_productos(RUTA_JSON))  # Valores de los nombres que da el JSON
 def test_cart_json(login_in_driver, usuario, password, nombre_producto):

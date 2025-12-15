@@ -101,6 +101,8 @@ El proyecto está organizado de la siguiente, aplicando el Page Object Model:
     - **workflows/**
         - `ci.yml`  (Realiza las acciones de integración continua dentro de Github)
 
+- `requirements.txt` (Dependencias del proyecto)
+
 - `README.md`  (Resumen del proyecto)
 
 
