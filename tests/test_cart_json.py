@@ -6,6 +6,7 @@ from pages.login_page import LoginPage
 from pages.inventory_page import InventoryPage
 from pages.cart_page import CartPage
 from utils.lector_json import leer_json_productos
+from utils.logger import logger
 
 # Definir constante con la ruta del archivo Json
 RUTA_JSON = "datos/productos.json"
@@ -16,7 +17,9 @@ RUTA_JSON = "datos/productos.json"
 @pytest.mark.parametrize("usuario, password",[("standard_user","secret_sauce")])
 @pytest.mark.parametrize("nombre_producto", leer_json_productos(RUTA_JSON))  # Valores de los nombres que da el JSON
 def test_cart_json(login_in_driver, usuario, password, nombre_producto):
+    logger.info("'Iniciando prueba de Carrito con JSON.'") # log
     try:
+        logger.info("Completando los datos de usuario.") # log
         driver = login_in_driver
         LoginPage(driver).login_completo(usuario,password)
 
@@ -24,17 +27,21 @@ def test_cart_json(login_in_driver, usuario, password, nombre_producto):
         inventory_page = InventoryPage(driver)
 
         # Agregar al carrito los productos que están en el JSON
+        logger.info("Agregando producto del JSON al carrito.") # log
         inventory_page.agregar_producto_por_nombre(nombre_producto)
 
         # Abrir el carrito
+        logger.info("Abriendo el carrito.") # log
         inventory_page.abrir_carrito()
 
         # Validar el producto
         cartPage = CartPage(driver)   # Instanciar el CartPage 
+        logger.info("Validando que el nombre del producto en el carrito corresponde al producto agregado.") # log
         assert cartPage.obtener_nombre_producto_carrito() == nombre_producto
 
 # Guardar en una variable (e) el error que tuvo en el momento de la ejecución 
     except Exception as e:
+        logger.info("Informando error detectado durante el test de carrito con JSON.") # log
         print(f"Error en test_cart: {e}")   # Mostrarlo con un print:
         raise     # Avisar a pytest que hubo un error
         

@@ -119,7 +119,7 @@ Todas las pruebas y los reportes de resultados se ejecutan al correr el siguient
 
 ## Reportes de Resultados
 ### Reporte HTML: 
-Los resultados de las pruebas se guardan en un reporte HTML (```report.html```), ubicado en la carpeta ```**reports/```. El reporte incluye el detalle cada test, su resultado (passed / failed) y su tiempo de duración.
+Los resultados de las pruebas se guardan en un reporte HTML (```report.html```), ubicado en la carpeta ```reports/```. El reporte incluye el detalle cada test, su resultado (passed / failed) y su tiempo de duración.
 
 ### Capturas de Pantalla:
 También se realizan capturas de pantalla por cada falla ocurrida durante la ejecución de un test. Son archivos ` .png`  que se guardan en la siguiente ubicación: ```reports/screens/```.
@@ -134,7 +134,8 @@ Algunos tests utilizan datos de prueba parametrizados, ubicados en la carpeta ``
 - `productos.json` datos de producto de inventario, para pruebas de cart.
 
 ## Integración Continua
-Cualquier cambio en el código se verifica en forma automática en el repositorio de Github, inmediatamente luego de cada push, dejando un reporte de resultado:  si algún test falla, se marca y notifica. Por el contrario, si todos los test pasan exitosamente, la versión queda validada e integrada. 
+Cualquier cambio en el código se verifica en forma automática en el repositorio de Github, inmediatamente luego de cada push, dejando un reporte de resultado.
+Si algún test falla, se marca y notifica. Por el contrario, si todos los testspasan exitosamente, la versión queda validada e integrada. 
 Los comandos para esto, se encuentran en la siguiente ubicación: ```.github/workflows/ci.yml```.
 
 

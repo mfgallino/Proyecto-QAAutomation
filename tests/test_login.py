@@ -10,7 +10,8 @@ from utils.logger import logger
 
 @pytest.mark.parametrize("usuario, password, debe_funcionar", leer_csv_login("datos/data_login.csv"))
 def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
-    logger.info("Completando los datos de usuario") # log
+    logger.info("'Iniciando prueba de Login.'") # log
+    logger.info("Completando los datos de usuario.") # log
     driver = login_in_driver
 
     LoginPage(driver).login_completo(usuario,password)
@@ -23,7 +24,8 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
     else:
         mensaje_error = LoginPage(driver).obtener_error()
         assert "Epic sadface" in mensaje_error, "El mensaje de error no se está mostrando."
-        logger.info("Prueba de login con datos incorrectos completada.") # log   
+        logger.info("Prueba de login con datos incorrectos completada.") # log
+    
 
     """FALTA VOLVER A AGREGAR ESTO:
     # <> Validar el Encabezado ("SWAG LABS") y el Subtítulo ("PRODUCTS") de la página
@@ -31,7 +33,4 @@ def test_login_validation(login_in_driver, usuario, password, debe_funcionar):
     assert driver.find_element(By.CLASS_NAME,"title").text == "Products", f"El subtítulo de la página es incorrecto: {driver.find_element(By.CLASS_NAME,"title").text}"
     """
 
-    #Finalmente, cerrar la página (cualquiera sea el resultado del test)
-    driver.quit()
-    logger.info("Fin del test.")
-
+    
